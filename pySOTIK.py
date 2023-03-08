@@ -23,14 +23,15 @@ def check_spellings(text):
     if response.ok:
         json_response = response.json()
         tokens = json_response["tokens"]
-        corrected_text = ""
+        corrected_tokens = []
         for token in tokens:
-            corrected_text += token["token"]
+            corrected_tokens.append(token["token"])
+        corrected_text = " ".join(corrected_tokens)
         return corrected_text
     else:
         return None
 
 # example usage
-text = " bangla gibrish "
+text = "the text i am testing"
 corrected_text = check_spellings(text)
 print(corrected_text)
